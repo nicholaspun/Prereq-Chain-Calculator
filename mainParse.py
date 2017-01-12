@@ -2,18 +2,30 @@ from html.parser import HTMLParser
 import urllib.request as urllib
 import codecs
 
-courseNameLen = 6
+courseNameLen = 6 
 URL = "http://www.ucalendar.uwaterloo.ca/1617/COURSE/course-CS.html"
-response = urllib.urlopen(URL)
-file = response.read().decode("utf-8")
+response = urllib.urlopen(URL) # open URL & store object
+file = response.read().decode("utf-8") # Read & convert raw data to string
 
+course_names = []
+prereqs = []
 
 class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         if (data.startswith("CS ")):
-            print("Course:", data[0:courseNameLen])
+            course_names.append(data[0:courseNameLen])
         if (data.startswith("Prereq: ")):
-            print(data)
+            prereqs.append(data)
 
 parser = MyHTMLParser()
-parser.feed(file) 
+parser.feed(file)
+
+courses = dict(zip(course_names, prereqs))
+
+def find_prereq(course_name):
+    print(courses[course_name])
+
+## Tests:
+find_prereq("CS 448")
+find_prereq("CS 135")
+find_prereq("CS 100")
