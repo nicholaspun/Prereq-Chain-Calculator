@@ -6,7 +6,6 @@ import re
 #------------------
 # Global Variables
 #------------------
-courseNameLen = 6 
 URL = "http://www.ucalendar.uwaterloo.ca/1617/COURSE/course-CS.html"
 
 #------------------
@@ -63,9 +62,8 @@ def makePrereqList(prereqStr):
           
     return pList
 
-
 #------------------
-# HELPER FUNCTIONS
+# CASE FUNCTIONS
 #------------------
 def nonCoursePrereq(prereq):
     '''
@@ -101,6 +99,9 @@ def splitOneofTwoofCase(pList):
             pList[i][1] = insertFront(dept, pList[i][1])         
     return pList
 
+#------------------
+# HELPER FUNCTIONS
+#------------------
 def findCourseDept(course):
     '''
     returns the department a course belongs to.
@@ -129,9 +130,6 @@ def findPrereq(courseCode):
     returns the prerequistes for given course code.
     '''
     pass 
-
-
-
 
 #------------------
 # Main Script
