@@ -25,7 +25,7 @@ file = response.read().decode("utf-8") # Read & convert raw data to string
 
 # pattern only works for CS courses for now 
 
-pattern = re.compile(r'<a name = "CS(\d+)"></a>')
+pattern = re.compile(r'<a name = "CS(\d+)"></a>.*(Prereq: .+?)(?=</i></td></tr><tr><td colspan=2><i>)')
 parsedFile = re.findall(pattern, file)
 print(parsedFile)
 
