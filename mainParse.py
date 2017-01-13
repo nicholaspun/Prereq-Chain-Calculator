@@ -22,10 +22,30 @@ def makePrereqList(prereqStr):
     '''
     returns a list of parsed prerequistes 
     '''
-    pListTemp = prereqStr.split(';')
-    pListTemp[:] = filterfalse(nonCoursePrereq, pListTemp)
-    pListTemp[:] = [x.split(" and ") for x in pListTemp]
-    return pListTemp
+    pList = prereqStr.split(';')
+    print(pList)
+    # remove non course-related prereqs
+    pList[:] = filterfalse(nonCoursePrereq, pList)
+    print(pList)
+    for x in pList:
+        x = x.split('and'))
+        
+    print(pList)
+    # Split prereqs for "One of" and "Two of" cases
+    '''
+    for p in pList:
+        p = p.upper().strip()
+        if ("ONE OF" in p):
+            p.replace("ONE OF", "")
+            p = p.split(', ')
+            p = [1, prereq]
+        elif ("TWO OF" in prereq):
+            p.replace("TWO OF", "")
+            p = p.split(', ')
+            p = [2, prereq]
+            '''
+                
+    return pList
 
 def findPrereq(courseCode):
     '''
@@ -66,6 +86,10 @@ def buildDict():
 #------------------
 
 courses = buildDict()
+
+# Tests:
+print(makePrereqList(courses["330"])) # non course-related prereq
+print(makePrereqList(courses["349"])) # "and" keyword 
 
 
 
