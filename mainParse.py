@@ -3,20 +3,6 @@ import urllib.request as urllib
 import codecs
 import re
 
-
-'''
-with open('miniHTML.txt', 'r') as file:
-    contents = file.read() #.split('<center><table border=0 width=80%><tr><td align=left>')
-pattern = re.compile(r'<a name = "(CS\d+)"></a>')
-parsedContents = re.findall(pattern, contents)
-
-
-parsedContents = []
-for line in contents:
-    parsedContents.append(re.search(pattern, line))
-print(parsedContents)
-'''
-
 courseNameLen = 6 
 URL = "http://www.ucalendar.uwaterloo.ca/1617/COURSE/course-CS.html"
 response = urllib.urlopen(URL) # open URL & store object
@@ -25,9 +11,12 @@ file = response.read().decode("utf-8") # Read & convert raw data to string
 
 # pattern only works for CS courses for now 
 
-pattern = re.compile(r'<a name = "CS(\d+)"></a>.*(Prereq: .+?)(?=</i></td></tr><tr><td colspan=2><i>)')
-parsedFile = re.findall(pattern, file)
-print(parsedFile)
+pattern1 = re.compile(r'<a name = "CS(\d+)"></a>.+?<i>(Prereq: .+?)</i>') # With Course Prereqs
+pattern2 = re.compile(r'<a name = "CS(\d+)"></a>') # Course Code only 
+parsedWithPreReq = re.findall(pattern1, file)
+parsedOnlyCCode = re.findall(pattern2, file)
+print(parsedWithPreReq)
+print(parsedOnlyCCode)
 
 
 '''
