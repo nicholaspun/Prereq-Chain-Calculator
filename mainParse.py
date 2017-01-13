@@ -50,15 +50,29 @@ def makePrereqList(prereqStr):
     # remove non course-related prereqs
     pList[:] = filterfalse(nonCoursePrereq, pList)
 
-    # split prereqs for "and" case 
+    # Split prereqs at "and"  
     tempList = []
     for i in range(len(pList)):
         tempList += pList[i].split(' and ')   
+    pList = tempList
+
+    # Split prereqs at "," (commas)
+    tempList = []
+    for i in range(len(pList)):
+        tempList += pList[i].split("), ")
     pList = tempList
     
     # Split prereqs for "One of" and "Two of" cases
     pList = splitOneofTwoofCase(pList)
 
+    # Split prereqs for "or" case
+    tempList = []
+    for i in range(len(pList)):
+        if (type(pList[i]) == str and pList[i] != "NONE"):
+            tempList += [1, pList[i].split(" OR ")]
+        else:
+            tempList += [pList[i]]
+    pList = tempList
           
     return pList
 
@@ -136,12 +150,21 @@ def findPrereq(courseCode):
 #------------------
 
 courses = buildDict()
+#print(courses)
+for key, value in courses.items():
+    courses[key] = makePrereqList(value)
+print(courses)
 
-# Tests:
+''' Tests:
 print("orig:", courses["330"])
 print(makePrereqList(courses["330"])) # non course-related prereq
 print("orig:", courses["349"])
-print(makePrereqList(courses["349"])) # "and" keyword 
+print(makePrereqList(courses["349"])) # "and" keyword (and "One of")
+print("orig:", courses["245"])
+print(makePrereqList(courses["245"])) # , (comma)
+print("orig:", courses["452"])
+print(makePrereqList(courses["452"])) # "or" keyword
+'''
 
 
 
