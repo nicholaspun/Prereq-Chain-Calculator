@@ -3,35 +3,32 @@ import urllib.request as urllib
 import codecs
 import re
 
+
+'''
 with open('miniHTML.txt', 'r') as file:
     contents = file.read() #.split('<center><table border=0 width=80%><tr><td align=left>')
 pattern = re.compile(r'<a name = "(CS\d+)"></a>')
 parsedContents = re.findall(pattern, contents)
 
-'''
+
 parsedContents = []
 for line in contents:
     parsedContents.append(re.search(pattern, line))
-'''
 print(parsedContents)
-
-
-
 '''
+
 courseNameLen = 6 
 URL = "http://www.ucalendar.uwaterloo.ca/1617/COURSE/course-CS.html"
 response = urllib.urlopen(URL) # open URL & store object
 file = response.read().decode("utf-8") # Read & convert raw data to string
-file.split('\n')
-print(file)
-'''
+
 
 # pattern only works for CS courses for now 
-'''
+
 pattern = re.compile(r'<a name = "CS(\d+)"></a>')
-parsedFile = re.search(pattern, file)
+parsedFile = re.findall(pattern, file)
 print(parsedFile)
-'''
+
 
 '''
 course_names = []
