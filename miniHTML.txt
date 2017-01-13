@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>Courses Computer Science </title></head>
+<body>
+</head>
+<body link="ff0000" vlink="0000ff"  bgcolor="#FFFFFF">
+<table width="100%">
+<td valign=top align=left><h3>Course Descriptions - Undergraduate Calendar 2017-2018</h3>
+
+<a href="https://uwaterloo.ca/">University of Waterloo Home</a> |
+<a href="http://ugradcalendar.uwaterloo.ca/">Undergraduate Calendar</a> |
+<a href="http://ugradcalendar.uwaterloo.ca/default.aspx?pageid=616">Course Description Index</a> |
+<a href="http://ugradcalendar.uwaterloo.ca/default.aspx?pageid=11808">Contact Us</a> |
+<a href="https://uwaterloo.ca/privacy/">Privacy</a>
+
+<hr>
+<td width="20%" valign=top align=center><img
+  src="http://uwaterloo.ca/images/template/uw_wordmark.gif"
+  alt="University of Waterloo">
+<br>
+</td>
+</table>
+
+<table width="100%" cellpadding=5  vlink="#00FF00" >
+<!-- commented  out links so only use ACMS for navigation - Cam McKay - 29th Jan 2009
+ <tr>
+ <td width="20%" bgcolor="#FF0000" vlink="#00FF00">
+ <table  width="100%" >
+   <tr><td align=center >
+   <a href="http://www.uwaterloo.ca"><font color="#FFFF00" face=helvetica  size="-1"><b>UW&nbsp;&nbsp;HOME</b></font></a>
+   </td>
+   </table>
+   
+<td align=center width="20%" bgcolor="#000000">
+ <table  width="100%" >
+  <tr><td align=center>
+  <a href="http://www.ucalendar.uwaterloo.ca/0708/COURSE/index.html"><FONT  face=helvetica  size="-1"
+    COLOR="#FFCC00"><b>CALENDAR &nbsp;CONTENTS</b></font></a>
+ </table>
+</td>
+
+
+   
+<td align=center width="20%" bgcolor="#000000">
+ <table  width="100%" >
+  <tr><td align=center>
+  <a href="index.html"><FONT  face=helvetica  size="-1"
+    COLOR="#FFCC00"><b>UNDERGRADUATE COURSE DESCRIPTIONS &nbsp;INDEX</b></font></a>
+ </table>
+</td>
+
+</table>
+
+-->
+
+</table>
+
+
+<table width="100%" cellpadding=15  >
+<tr>
+
+
+<td align=center width="20%" bgcolor="#FFFFC6">
+
+<table  width="100%" >
+
+<tr><td align=center><font color="#000000"   size="+2"><b>
+
+
+<p>
+C O M P U T E R &nbsp; S C I E N C E&nbsp;
+</table>
+</table>
+<!--
+<center><img src="http://www.adm.uwaterloo.ca/infoucal/images/new-smalluw.gif"></center>
+-->
+<p>
+
+<p>
+<h4>Notes</h4>
+<ol>
+ <li><i>The phrase "Computer Science students" refers to students enrolled in any Honours plan offered through the David R. Cheriton School of Computer Science. Software Engineering and Computing and Financial Management students are considered Computer Science students.</i>
+ 
+ 
+ <p><i> Due to course restrictions on upper-year courses, students pursuing a Computer Science minor many need to enrol as Computer Science students for part of their undergraduate studies and should conatact a CS advisor for more information.</i></p>
+ <li>
+ <p><i>First-year CS courses are available to all students with the exception of CS 100, which is not open to Math faculty students and most Engineering students, and CS 137 and 138, which are only available to Software Engineering students.</i></p> 
+ <li><i>Upper-year CS courses are divided into two streams.</i></li>
+ <ul>
+ <i> Courses with middle digits 4 to 9, e.g., 350 are designed specifically for Computer Science students. Some courses are open to all Math faculty students, but most are restricted to Computer Science students only.</i>
+ </ul> <br>
+ <ul>
+ <i>Courses with middle digits 0 to 3, e.g., 230 are designed for a broader audience, including students pursuing the Computing Technology option. These courses are not available to Computer Science students.</i></ul> <br>
+ <li><i> In exceptional circumstances, student who are not Computer Science students may be allowed to take restricted CS courses. For more information, students should contact a CS advisor.
+ Engineering students are not usually allowed to take restricted CS courses that have an Engineering equivalent available. When space is limited for restricted CS courses, Computer Science students are given priority.</i><br></br>
+<li><i>Computer Science relies on student pre-enrolment data to determine the demand for courses. Every effort is made to accomodate students who choose classes during the pre-enrolment period, though space may be limited for some courses. Students who do not pre-enrol may be unable to take their preferred courses.</i><br></br>
+<li><i>The terms in which courses are offered may change. For up-to-date information, students should check the <a
+
+href="http://www.adm.uwaterloo.ca/infocour/CIR/SA/under.html">&quot;Schedule 
+ of Classes.&quot;</a>
+ </i>
+ <br></br>
+ 
+ <li><i> A CS course may not be taken for credit if it is the prerequisite of
+ another CS course that has already been passed.</i><br></br>
+ 
+ <li><i>Students who have demonstrated exceptionally strong academic performance can take graduate-level courses if there is enough space and they get approval from both the instructor and a CS advisor. Undergraduates are not allowed to enrol in 600-level courses when an equivalent 400-level exists.</i><br></br>
+ <li><i>An enriched version of a Computer Science course, with an &quot;E&quot; suffix, may be substituted for the regular version of that course in any plan requirement or course prerequisite, or for any other calendar purpose. Whenever a Computer Science course is an antirequisite for another course, the enriched version is also an antirequisite for that course. A student may not receive credit for both the enriched version and the regular version of any Computer Science course.
+ <p>Undergraduate students who take graduate courses that do not count towards their undergraduate degree can sometimes use these courses to satisfy graduate study requirements. For more information, students should see the "Accelerated Master's Academic Plans in Computer Science" section.</i>
+</ol>
+ 
+ <p><A name="CS100S"><h3>CS 100s</h3></a><br>
+<center><table border=0 width=80%><tr><td align=left><B><a name = "CS100"></a>CS 100 LEC 0.50</b></td><td align=right>Course ID: 004360</td></tr><tr><td colspan=2><b>Introduction to Computing through Applications</B></td></tr><tr><td colspan=2>Using personal computers as effective problem solving tools for the present and the future. Effective use of spreadsheets to process, manipulate, and visualize numeric and textual information. Introduction to the Internet, World Wide Web, HTML, and XML. Algorithms underlying the functional components of web search engines and their influence on data access. Using wikis to publish, reshape, and organize data collaboratively. [Offered: F,W,S]</td></tr><tr><td colspan=2><i> </i></td></tr><tr><td colspan=2><i>Prereq: Not open to Mathematics,Biomedical,Chemical,Civil,Computer & Electrical,Environmental,Geological,Management,Mechanical,Mechatronics,Nanotechnology & Systems Design Eng students.</i></td></tr><tr><td colspan=2><i> Antireq: All second,third or fourth year CS courses or equivalents</i></td></tr><tr><td colspan=2><i><a href = "http://cel.uwaterloo.ca/courses/"><b>Only offered Online</b></a></td></tr></i></table></center><Br><P>
+<center><table border=0 width=80%><tr><td align=left><B><a name = "CS105"></a>CS 105 LAB,LEC,TST 0.50</b></td><td align=right>Course ID: 015054</td></tr><tr><td colspan=2><b>Introduction to Computer Programming 1</B></td></tr><tr><td colspan=2>An introduction to the fundamentals of computer programming through media computation. Students will learn to write interactive graphical programs. Fundamental language concepts such as variables, conditionals, loops, functions, and arrays. Programming concepts such as coding style, modular design, testing, and debugging. Media concepts such as 2D graphics drawing, input, animation, and image processing. [Offered: F]</td></tr><tr><td colspan=2><i> </i></td></tr><tr><td colspan=2><i>Prereq: Not open to Mathematics students.</i></td></tr><tr><td colspan=2><i> Antireq: BME 121, CS 115, 135, 137, 145, CHE 121, CIVE 121, ECE 150, GENE 121, NE 111, MSCI 121, PHYS 236, SYDE 121</i></td></tr><p></table></center><Br><P>
+<center><table border=0 width=80%><tr><td align=left><B><a name = "CS106"></a>CS 106 LAB,LEC,TST 0.50</b></td><td align=right>Course ID: 015055</td></tr><tr><td colspan=2><b>Introduction to Computer Programming 2</B></td></tr><tr><td colspan=2>A continuation of the introduction to computer programming begun in CS 105. The use of programming, in conjunction with libraries, as a means of solving practical problems in art, design, and data processing. Basic text processing, manipulation of images and sound, handling and visualization of tabular and hierarchical data. Introductions to user interfaces, physical simulation, and object-oriented programming. [Offered: W]</td></tr><tr><td colspan=2><i> </i></td></tr><tr><td colspan=2><i>Prereq: CS 105; Not open to Mathematics students.</i></td></tr><tr><td colspan=2><i> Antireq: BME 121, CS 115, 135, 137, 145, CHE 121, CIVE 121, ECE 150, GENE 121, NE 111, MSCI 121, SYDE 121</i></td></tr><p></table></center><Br><P>
