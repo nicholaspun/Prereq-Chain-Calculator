@@ -6,25 +6,33 @@ import re
 #------------------
 # Global Variables
 #------------------
-URL = "http://www.ucalendar.uwaterloo.ca/1617/COURSE/course-CS.html"
+URL_CS = "http://www.ucalendar.uwaterloo.ca/1617/COURSE/course-CS.html"
+# URL_STAT = "http://www.ucalendar.uwaterloo.ca/1617/COURSE/course-STAT.html"
+# The course calendar page for STAT courses is extremely inconsistent
+# --> See (Insert file name here) for JSON data for STAT courses
+URL_MATH = "http://www.ucalendar.uwaterloo.ca/1617/COURSE/course-MATH.html"
 
 #------------------
 # MAIN FUNCTIONS
 #------------------
-def buildDict():
+def buildDict(URL):
     '''
-    Builds a dictionary of courses from the provided URL above.
+    Builds a dictionary of courses from the provided URL.
     Key -- Course Code 
     Value -- Un-modified Prerequistes
     '''
-    #response = urllib.urlopen(URL) # open URL & store object
-    #file = response.read().decode("utf-8") # Read & convert raw data to string
+    response = urllib.urlopen(URL) # open URL & store object
+    file = response.read().decode("utf-8") # Read & convert raw data to string
 
-    file = open("CSHTML.txt",'r').read()
+    #file = open("CSHTML.txt",'r').read() # for offline usage
+
+    # find department
+    deptPattern = re.compile(r"course-(.+?).html")
+    dept = re.search(deptPattern, URL).group(1)
     
     # patterns only work for CS courses (for now) 
-    pattern1 = re.compile(r'<a name = "CS(\d+)"></a>.+?<i>Prereq:(.+?)</i>') # With Course Prereqs
-    pattern2 = re.compile(r'<a name = "CS(\d+)"></a>') # Course Code only
+    pattern1 = re.compile(r'<a name = "(%s\d+)"></a>.+?<i>Prereq:(.+?)</i>' % dept) # With Course Prereqs
+    pattern2 = re.compile(r'<a name = "(%s\d+)"></a>' % dept) # Course Code only
 
     # List of (Course Code, Prereq) for courses with prereqs
     parsedWithPreReq = re.findall(pattern1, file)
@@ -37,6 +45,10 @@ def buildDict():
     for ccode in parsedOnlyCCode:
         if (ccode not in DictofCourses):
             DictofCourses[ccode] = "None"
+
+    # Parse through prereqs and transform in meaningful lists
+    for key, value in DictofCourses.items():
+        DictofCourses[key] = makePrereqList(value)
 
     return DictofCourses
 
@@ -53,7 +65,8 @@ def makePrereqList(prereqStr):
     # Split prereqs at "and"  
     tempList = []
     for i in range(len(pList)):
-        tempList += pList[i].split(' and ')   
+        tempList += pList[i].split(' and ')
+        tempList += pList[i].split('&')   
     pList = tempList
 
     # Split prereqs at "," (commas)
@@ -69,7 +82,7 @@ def makePrereqList(prereqStr):
     tempList = []
     for i in range(len(pList)):
         if (type(pList[i]) == str and pList[i] != "NONE"):
-            tempList += [1, pList[i].split(" OR ")]
+            tempList += [[1, pList[i].split(" OR ")]]
         else:
             tempList += [pList[i]]
     pList = tempList
@@ -113,6 +126,13 @@ def splitOneofTwoofCase(pList):
             pList[i][1] = insertFront(dept, pList[i][1])         
     return pList
 
+def findPrereqChain(courseCode):
+    '''
+    returns the prerequistes chain for given course code.
+    '''
+    courseList = courseDict[courseCode]
+    print(courseList)
+
 #------------------
 # HELPER FUNCTIONS
 #------------------
@@ -137,23 +157,19 @@ def insertFront(dept, lst):
     for i in range(len(lst)):
         if (i == 0): continue
         lst[i] = dept + lst[i]
-    return lst
-            
-def findPrereq(courseCode):
-    '''
-    returns the prerequistes for given course code.
-    '''
-    pass 
+    return lst 
 
 #------------------
 # Main Script
 #------------------
 
-courses = buildDict()
-#print(courses)
-for key, value in courses.items():
-    courses[key] = makePrereqList(value)
-print(courses)
+CS_dict = buildDict(URL_CS)
+MATH_dict = buildDict(URL_MATH)
+
+print(CS_dict)
+print("+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~++~+~+~+~\n")
+print(MATH_dict)
+print("+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~++~+~+~+~\n")
 
 ''' Tests:
 print("orig:", courses["330"])
