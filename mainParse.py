@@ -65,11 +65,10 @@ def makePrereqList(prereqStr):
     # Split prereqs at "and"  
     tempList = []
     for i in range(len(pList)):
-        tempList += pList[i].split(' and ')
-        tempList += pList[i].split('&')   
+        tempList += pList[i].split('and') 
     pList = tempList
 
-    # Split prereqs at "," (commas)
+    # Split prereqs at "," (commas) [1]
     tempList = []
     for i in range(len(pList)):
         tempList += pList[i].split("), ")
@@ -81,11 +80,30 @@ def makePrereqList(prereqStr):
     # Split prereqs for "or" case
     tempList = []
     for i in range(len(pList)):
-        if (type(pList[i]) == str and pList[i] != "NONE"):
+        if (type(pList[i]) == str and pList[i] != "NONE" and "OR" in pList[i]):
             tempList += [[1, pList[i].split(" OR ")]]
         else:
             tempList += [pList[i]]
     pList = tempList
+    print(pList)
+    # Split prereqs at "," (commas) [2 - again]
+    # This case is necessary, when such prereq strings are given:
+    # --> 'CS 240, 241'
+    # Such a case cannot be handled before handling the "One of"
+    #   and "Two of" cases because those commas stand for OR, while
+    #   the commas in this case stand for AND.
+    tempList = []
+    for i in range(len(pList)):
+        print(pList[i])
+        if (type(pList[i]) == str and pList[i] != "NONE"):
+            splitList = pList[i].split(", ")
+            dept = findCourseDept(splitList[0])
+            splitList = insertFront(dept, splitList)
+            tempList += splitList
+        else:
+            tempList += [pList[i]]
+    pList = tempList
+        
           
     return pList
 
@@ -163,13 +181,17 @@ def insertFront(dept, lst):
 # Main Script
 #------------------
 
-CS_dict = buildDict(URL_CS)
-MATH_dict = buildDict(URL_MATH)
+#CS_dict = buildDict(URL_CS)
+#MATH_dict = buildDict(URL_MATH)
 
-print(CS_dict)
-print("+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~++~+~+~+~\n")
-print(MATH_dict)
-print("+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~++~+~+~+~\n")
+#print(CS_dict)
+#print("+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~++~+~+~+~\n")
+#print(MATH_dict)
+#print("+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~++~+~+~+~\n")
+
+print(makePrereqList("CS 240, 241 and (MATH 239 or 249); Computer Science students only."))
+
+#print(CS_dict["CS365"])
 
 ''' Tests:
 print("orig:", courses["330"])
