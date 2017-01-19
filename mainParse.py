@@ -2,6 +2,7 @@ from itertools import filterfalse
 import urllib.request as urllib
 import codecs
 import re
+import json
 
 #------------------
 # Global Variables
@@ -9,7 +10,7 @@ import re
 URL_CS = "http://www.ucalendar.uwaterloo.ca/1617/COURSE/course-CS.html"
 # URL_STAT = "http://www.ucalendar.uwaterloo.ca/1617/COURSE/course-STAT.html"
 # The course calendar page for STAT courses is extremely inconsistent
-# --> See (Insert file name here) for JSON data for STAT courses
+# --> See STAT.json for JSON data for STAT courses
 URL_MATH = "http://www.ucalendar.uwaterloo.ca/1617/COURSE/course-MATH.html"
 
 #------------------
@@ -61,7 +62,7 @@ def makePrereqList(prereqStr):
     
     # remove non course-related prereqs
     pList[:] = filterfalse(nonCoursePrereq, pList)
-
+    
     # Split prereqs at "and"  
     tempList = []
     for i in range(len(pList)):
@@ -81,11 +82,14 @@ def makePrereqList(prereqStr):
     tempList = []
     for i in range(len(pList)):
         if (type(pList[i]) == str and pList[i] != "NONE" and "OR" in pList[i]):
-            tempList += [[1, pList[i].split(" OR ")]]
+            splitList = pList[i].split(" OR ")
+            dept = findCourseDept(splitList[0])
+            splitList = insertFront(dept, splitList)
+            tempList += [[1, splitList]]
         else:
             tempList += [pList[i]]
     pList = tempList
-    print(pList)
+    
     # Split prereqs at "," (commas) [2 - again]
     # This case is necessary, when such prereq strings are given:
     # --> 'CS 240, 241'
@@ -93,8 +97,8 @@ def makePrereqList(prereqStr):
     #   and "Two of" cases because those commas stand for OR, while
     #   the commas in this case stand for AND.
     tempList = []
-    for i in range(len(pList)):
-        print(pList[i])
+    for i in range(len(pList)): # Yes, I realize there's a lot of repeated code
+                                # No, I won't try to make it more abstract
         if (type(pList[i]) == str and pList[i] != "NONE"):
             splitList = pList[i].split(", ")
             dept = findCourseDept(splitList[0])
@@ -181,29 +185,20 @@ def insertFront(dept, lst):
 # Main Script
 #------------------
 
-#CS_dict = buildDict(URL_CS)
-#MATH_dict = buildDict(URL_MATH)
+CS_dict = buildDict(URL_CS)
+MATH_dict = buildDict(URL_MATH)
 
-#print(CS_dict)
+print(CS_dict)
 #print("+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~++~+~+~+~\n")
 #print(MATH_dict)
 #print("+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~++~+~+~+~\n")
 
-print(makePrereqList("CS 240, 241 and (MATH 239 or 249); Computer Science students only."))
+# Convert to json and write to file.
+CS_json = json.dumps(CS_dict, sort_keys=True, indent=4, separators=(',', ': '))
 
-#print(CS_dict["CS365"])
-
-''' Tests:
-print("orig:", courses["330"])
-print(makePrereqList(courses["330"])) # non course-related prereq
-print("orig:", courses["349"])
-print(makePrereqList(courses["349"])) # "and" keyword (and "One of")
-print("orig:", courses["245"])
-print(makePrereqList(courses["245"])) # , (comma)
-print("orig:", courses["452"])
-print(makePrereqList(courses["452"])) # "or" keyword
-'''
-
+CS_json_file = open("CS.json", 'w')
+CS_json_file.write(CS_json)
+CS_json_file.close()
 
 
 
