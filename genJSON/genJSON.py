@@ -194,11 +194,11 @@ print(CS_dict)
 #print("+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~++~+~+~+~\n")
 
 # Convert to json and write to file.
-CS_json = json.dumps(CS_dict, sort_keys=True, indent=4, separators=(',', ': '))
+#CS_json = json.dumps(CS_dict, sort_keys=True, indent=4, separators=(',', ': '))
 
-CS_json_file = open("CS.json", 'w')
-CS_json_file.write(CS_json)
-CS_json_file.close()
+#CS_json_file = open("CS2.json", 'w') 
+#CS_json_file.write(CS_json)
+#CS_json_file.close()
 
 
 
