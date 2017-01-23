@@ -38,5 +38,5 @@
   "MATH239": [[1, ["MATH106", "MATH136", "MATH146"]], [1, ["MATH135", "MATH145"]]],
   "MATH245": ["MATH146"],
   "MATH247": ["MATH146", "MATH148"],
-  "MATH249": [[1, ["MATH136", "MATH146"]], [1, ["MATH138", "MATH148"]]],
+  "MATH249": [[1, ["MATH136", "MATH146"]], [1, ["MATH138", "MATH148"]]]
 }

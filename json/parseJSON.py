@@ -1,8 +1,10 @@
 import json
 
-CS_json_raw = open('CS.json')
-CS_json_str = CS_json_raw.read()
-print(CS_json_str)
-CS_json = json.loads(CS_json_str)
-print(CS_json)
-print(CS_json["CS488"])
+#------------------
+# Read in JSON files
+#------------------
+CSData = json.loads(open('CS.json').read())
+MathData = json.loads(open('MATH.json').read())
+StatData = json.loads(open('STAT.json').read())
+
+
