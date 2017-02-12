@@ -13,12 +13,7 @@ for dept in depts:
 # MAIN FUNCTIONS
 #-------------------
 def printPrereqs(course):
-    dept = findCourseDept(course)
-    courseData = data[dept][course]
-    print(course)
-    for ele in courseData:
-        if (type(ele) == list): listHandler(ele)
-        else: print(ele)
+    printPrereqsHelper(course, 0)
 
 
 #-------------------
@@ -37,14 +32,24 @@ def findCourseDept(course):
         dept += course[i]
     return dept
 
-def listHandler(courseList):
-    '''
-    '''
-    print(courseList[0], "of:\n")
+def printPrereqsHelper(course, spaces):
+    dept = findCourseDept(course)
+    courseData = data[dept][course]
+    if (spaces == 0):
+        print(course)
+    else: 
+        print(" "*spaces + "+", course)
+    for ele in courseData:
+        if (type(ele) == list): listHandler(ele, spaces + 1)
+        else: print(" "*spaces + "+", ele) 
+
+def listHandler(courseList, spaces):
+    print(" "*spaces + str(courseList[0]), "of:")
     for cour in courseList[1]:
-        printPrereqs(cour)
+        printPrereqsHelper(cour, spaces + 1)
 
 
-printPrereqs("CS246")        
+printPrereqs("CS246")
+printPrereqs("CS452")  
 
     
