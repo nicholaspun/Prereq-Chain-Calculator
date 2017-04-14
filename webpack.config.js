@@ -18,7 +18,7 @@ module.exports = {
   ],
   output: {
     path: resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].[hash].js'
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -46,9 +46,10 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      "process.env": {
-        "API_URL": JSON.stringify("https://api.uwaterloo.ca/v2/")
-      }
+    "process.env": {
+      "API_URL": JSON.stringify("https://api.uwaterloo.ca/v2/"),
+      "API_KEY": JSON.stringify("06433ec8e376706dcc588a055f983fc7")
+    }
     }),
     new ProgressBarPlugin(),
     new HtmlWebpackPlugin({
@@ -56,5 +57,14 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: function (module) {
+           return module.context && module.context.indexOf('node_modules') !== -1;
+        }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'manifest'
+    })
   ]
 }
