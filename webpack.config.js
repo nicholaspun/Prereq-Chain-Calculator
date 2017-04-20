@@ -4,6 +4,7 @@ const webpack = require('webpack');
 // Plugins
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = function( env = {} ){
   const isProd = !!env.prod;
@@ -42,12 +43,7 @@ module.exports = function( env = {} ){
       new HtmlWebpackPlugin({
         template: './index.html'
       }),
-      new webpack.DefinePlugin({
-        "process.env": {
-          "API_URL": JSON.stringify("https://api.uwaterloo.ca/v2/"),
-          "API_KEY": JSON.stringify("06433ec8e376706dcc588a055f983fc7")
-        }
-      }),
+      new Dotenv(),
     ]
   }
 
